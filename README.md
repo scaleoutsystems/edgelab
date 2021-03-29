@@ -20,10 +20,23 @@ example hostsfile:
 127.0.0.2
 127.0.0.3
 ```
-2. Run the playbook
+2. Test the playbook
 ```bash
 $ ansible-playbook -i hosts agx-setup.yaml --check
 ```
+3. Run the playbook
+```bash
+$ ansible-playbook -i hosts agx-setup.yaml
+```
+
+4. Control remote clients
+```bash
+$ ansible-playbook -i hosts agx-stop.yaml
+```
+```bash
+$ ansible-playbook -i hosts agx-start.yaml
+```
+
 
 **Remark**
 This images uses CUDA 10.2.
