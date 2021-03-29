@@ -1,0 +1,46 @@
+---
+- name: AGX Setup
+  hosts: all
+  become: true
+  become_user: root
+  vars:
+    example: 'https://github.com/scaleoutsystems/FEDn-client-imdb-keras.git'
+  tasks:
+  - name: clone example
+    git:
+      repo: '{{ example }}'
+      dest: /home/jetson/example
+      version: agx
+      update: yes
+      force: yes
+  #- name: copy dataset
+  #  shell: |-
+  #    wget https://archive.org/download/data_20210128/data.zip
+  #    sudo apt install unzip -y
+  #    unzip data.zip
+  #    rm data.zip
+  #    exit 0
+  - name: copy fedn-network
+    copy:
+       src: fedn-network.yaml
+       dest: /home/jetson/example/fedn-network.yaml
+       mode: '0644'
+       force: yes
+  - name: copy fednrun script
+    copy:
+       src: fedn-client.sh
+       dest: /usr/bin/fedn-client.sh
+       mode: u+rwx,g+rx,o+rx
+  - name: copy service def
+    copy:
+      src: fednclient.service
+      dest: /etc/systemd/system/fednclient.service
+      mode: '0644'
+  #- name: reload systemd
+  #  ansible.builtin.systemd:
+
+  - name: start fedn-client service
+    service:
+      name: fednclient.service
+      daemon_reload: yes
+      state: restarted

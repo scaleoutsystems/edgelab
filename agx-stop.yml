@@ -1,0 +1,14 @@
+---
+- name: AGX Setup
+  hosts: all
+  become: true
+  become_user: root
+  vars:
+    example: 'https://github.com/scaleoutsystems/FEDn-client-imdb-keras.git'
+  tasks:
+
+  - name: start fedn-client service
+    service:
+      name: fednclient.service
+      #daemon_reload: yes
+      state: stopped

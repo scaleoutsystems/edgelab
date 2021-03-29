@@ -1,0 +1,3 @@
+172.25.16.72 ansible_connection=ssh ansible_user=jetson ansible_ssh_pass=SECRET_SANTA_HERE ansible_sudo_pass=SECRET_SANTA_HERE
+172.25.16.73 ansible_connection=ssh ansible_user=jetson ansible_ssh_pass=SECRET_SANTA_HERE ansible_sudo_pass=SECRET_SANTA_HERE
+[hosts:all]

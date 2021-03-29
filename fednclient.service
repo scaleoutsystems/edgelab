@@ -1,0 +1,13 @@
+[Unit]
+Description=FEDn Client Service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/fedn-client.sh
+Restart=always
+KillMode=control-group
+KillSignal=SIGKILL
+TimeoutSec=600
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+FROM scaleoutsystems/agx:latest
+
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+RUN pip3 install git+https://github.com/scikit-learn/scikit-learn.git
+
+RUN pip3 install transformers==4.1.1
+
+WORKDIR /app
