@@ -36,8 +36,6 @@
       src: fednclient.service
       dest: /etc/systemd/system/fednclient.service
       mode: '0644'
-  #- name: reload systemd
-  #  ansible.builtin.systemd:
 
   - name: start fedn-client service
     service:
